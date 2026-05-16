@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pigsmith — Scheme Generator</title>
+<meta name="description" content="Upload a reference image, get an AI-generated paint scheme with Citadel, Vallejo, Army Painter, and Scale75 cross-references.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/styles.css">
+<script defer src="https://us.i.posthog.com/static/array.js"></script>
+<script>
+window.posthog=window.posthog||[];posthog.init=function(k,o){posthog._k=k;posthog._o=o};
+posthog.init('phc_QLq1IyOJF3FIKXvF462tepbZqLj4hHUl5j3OkXE1ReT',{api_host:'https://us.i.posthog.com'});
+</script>
+</head>
+<body class="tool">
+<header class="tool-bar">
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="Pigsmith" class="brand-logo" onerror="this.style.display='none'">
+    <span class="brand-mark">Pigsmith</span>
+  </a>
+  <nav class="tool-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="#how" class="nav-link">How it works</a>
+    <a href="/#pricing" class="nav-link nav-cta">Upgrade</a>
+  </nav>
+</header>
+
+<main class="tool-shell">
+  <section class="tool-hero">
+    <span class="eyebrow">Free demo · 3 schemes/month</span>
+    <h1>Generate a paint scheme from any reference.</h1>
+    <p class="lede">Drop a photo of a Roman legionary, a Witcher screenshot, a concept sketch — anything. Pigsmith returns a layered recipe with cross-brand paint IDs in about eight seconds.</p>
+  </section>
+
+  <section class="workbench">
+    <form id="scheme-form" class="bench-form">
+      <div class="bench-row">
+        <label class="upload-zone" id="upload-zone">
+          <input type="file" id="reference-image" accept="image/*" hidden>
+          <div class="upload-empty" id="upload-empty">
+            <span class="upload-icon">+</span>
+            <strong>Drop reference image</strong>
+            <small>JPG, PNG, or WebP — up to 4 MB</small>
+          </div>
+          <div class="upload-filled" id="upload-filled" hidden>
+            <img id="upload-preview" alt="Reference">
+            <button type="button" class="upload-clear" id="upload-clear" aria-label="Remove">×</button>
+          </div>
+        </label>
+        <div class="bench-fields">
+          <label class="field">
+            <span>Describe the look (optional)</span>
+            <textarea id="reference-notes" rows="3" placeholder="e.g. weathered bronze, blood splatter, dusty cloak — Roman legionary feel"></textarea>
+          </label>
+          <label class="field">
+            <span>Preferred brand</span>
+            <select id="brand-pref">
+              <option value="any">Any brand (show all 4)</option>
+              <option value="citadel">Citadel</option>
+              <option value="vallejo">Vallejo</option>
+              <option value="armypainter">Army Painter</option>
+              <option value="scale75">Scale75</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Mini type</span>
+            <select id="mini-type">
+              <option value="generic">Pick automatically</option>
+              <option value="power_armour">Power armour (Space Marine etc.)</option>
+              <option value="historical">Historical infantry</option>
+              <option value="fantasy">Fantasy character</option>
+              <option value="creature">Creature / monster</option>
+              <option value="vehicle">Vehicle</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="bench-action">
+        <button type="submit" class="btn-primary" id="generate-btn">Generate scheme</button>
+        <span class="bench-meter" id="quota-meter">0 / 3 free schemes used this month</span>
+      </div>
+    </form>
+
+    <div id="result-area" class="result-area" hidden>
+      <div class="result-loading" id="result-loading">
+        <span class="spinner"></span>
+        <p>Pigsmith is reading the colours…</p>
+      </div>
+      <article class="recipe-card" id="recipe-card" hidden>
+        <header class="recipe-head">
+          <div>
+            <span class="recipe-eyebrow" id="recipe-eyebrow">Scheme</span>
+            <h2 id="recipe-title">—</h2>
+            <p class="recipe-summary" id="recipe-summary">—</p>
+          </div>
+          <div class="recipe-actions">
+            <button type="button" class="btn-secondary" id="copy-btn">Copy recipe</button>
+            <button type="button" class="btn-secondary" id="save-btn">Save to My Army</button>
+          </div>
+        </header>
+        <div class="recipe-zones" id="recipe-zones"></div>
+        <footer class="recipe-foot">
+          <small id="recipe-meta">Generated <span id="recipe-time">—</span> · Powered by Pigsmith</small>
+        </footer>
+      </article>
+      <div id="result-error" class="result-error" hidden></div>
+    </div>
+  </section>
+
+  <section id="how" class="how-row">
+    <h3>What you'll get back</h3>
+    <ol class="how-list">
+      <li><strong>Zones.</strong> Armour, cloth, skin, weapon, base — each colour zone identified from your reference.</li>
+      <li><strong>Layers.</strong> Basecoat → wash → layer → highlight → edge highlight. Tabletop-ready, not just "primer + drybrush".</li>
+      <li><strong>Brand cross-refs.</strong> Every paint mapped to Citadel, Vallejo, Army Painter, and Scale75 by closest LAB match.</li>
+      <li><strong>Technique notes.</strong> "Glaze the recess", "drybrush the fur", "wet-blend the cloak" — the bits the videos skim past.</li>
+    </ol>
+  </section>
+
+  <section class="capture-row" id="capture">
+    <div class="capture-card">
+      <h3>Save schemes, build an army.</h3>
+      <p>Free plan unlocks 3 schemes a month. Drop your email to keep your generations and get a weekly digest of community schemes.</p>
+      <form id="capture-form" class="capture-form">
+        <input type="email" id="capture-email" placeholder="painter@example.com" required>
+        <button type="submit" class="btn-primary">Save my schemes</button>
+      </form>
+      <p class="capture-note" id="capture-note"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="tool-foot">
+  <span>© 2026 Pigsmith · A Major Solutions Studio joint.</span>
+  <a href="/">Back to home</a>
+</footer>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

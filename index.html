@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pigsmith — AI paint scheme advisor for miniature painters</title>
+<meta name="description" content="Upload a reference image and get an AI-generated paint scheme with Citadel, Vallejo, Army Painter, and Scale75 cross-references. Built for the Backlog Painter.">
+<meta property="og:title" content="Pigsmith — AI paint scheme advisor">
+<meta property="og:description" content="Cross-brand paint recipes from any reference image, in eight seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pigsmith.majorsolutions.studio">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/landing.css">
+<script defer src="https://us.i.posthog.com/static/array.js"></script>
+<script>
+window.posthog=window.posthog||[];posthog.init=function(k,o){posthog._k=k;posthog._o=o};
+posthog.init('phc_QLq1IyOJF3FIKXvF462tepbZqLj4hHUl5j3OkXE1ReT',{api_host:'https://us.i.posthog.com'});
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="brand">
+    <img src="/logo.png" alt="Pigsmith" class="brand-logo" onerror="this.style.display='none'">
+    <span class="brand-mark">Pigsmith</span>
+  </a>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="/tool.html" class="nav-cta">Try the demo</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="kicker">For the Backlog Painter</span>
+      <h1>Paint any mini, <br><em>in any scheme,</em><br> in any brand.</h1>
+      <p class="hero-sub">Pigsmith reads a reference image — historical photo, video game render, concept art, another painter's mini — and gives you a full layered paint recipe with <strong>Citadel, Vallejo, Army Painter, and Scale75</strong> cross-references. In about eight seconds. Built for the 700K+ painters who own the paints and own the minis but can't decide on the scheme.</p>
+      <div class="hero-cta">
+        <a href="/tool.html" class="btn-primary">Try the free demo →</a>
+        <span class="cta-meta">3 free schemes / month. No credit card.</span>
+      </div>
+      <div class="trust">
+        <span>✓ Cross-references 4 paint brands</span>
+        <span>✓ Layer-by-layer recipes</span>
+        <span>✓ Technique notes per zone</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="proof-card">
+        <div class="proof-head">
+          <span class="proof-eyebrow">Demo · Roman legionary</span>
+          <h3>Bronze of the IX Legion</h3>
+        </div>
+        <div class="proof-zones">
+          <div class="proof-zone">
+            <span class="proof-swatch" style="background:#A58853"></span>
+            <div>
+              <strong>Lorica Segmentata</strong>
+              <p>Hashut Copper → Nihilakh Oxide wash → Sycorax Bronze edge</p>
+              <small class="proof-brands">Citadel · Vallejo · Army Painter · Scale75</small>
+            </div>
+          </div>
+          <div class="proof-zone">
+            <span class="proof-swatch" style="background:#7A2A24"></span>
+            <div>
+              <strong>Tunic</strong>
+              <p>Khorne Red → Agrax wash → Wazdakka Red layer → Wild Rider edge</p>
+            </div>
+          </div>
+          <div class="proof-zone">
+            <span class="proof-swatch" style="background:#C49A6C"></span>
+            <div>
+              <strong>Skin</strong>
+              <p>Bugmans Glow → Reikland wash → Cadian Fleshtone → Kislev Flesh edge</p>
+            </div>
+          </div>
+          <div class="proof-zone">
+            <span class="proof-swatch" style="background:#5C3A22"></span>
+            <div>
+              <strong>Leather</strong>
+              <p>Mournfang Brown → Agrax Earthshade → Skrag Brown drybrush</p>
+            </div>
+          </div>
+        </div>
+        <div class="proof-foot">Generated in 7.4s · Try yours →</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pain">
+    <h2>You know the feeling.</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="pain-icon">📦</span>
+        <h3>The pile of shame</h3>
+        <p>Three Stormcast battleboxes, a Bolt Action platoon, and a Witcher Geralt sitting unpainted. Not because you don't have time. Because you can't pick a colour scheme.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🎥</span>
+        <h3>The wrong paint problem</h3>
+        <p>Every tutorial uses Citadel. You bought Vallejo. Thirty minutes of Googling later, you've cross-referenced two paints and given up.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">❓</span>
+        <h3>"What scheme should I use?"</h3>
+        <p>You posted to r/minipainting. Six hours later you have two replies, neither with paint IDs. The primer dried on the brush.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how">
+    <h2>How it works.</h2>
+    <ol class="how-steps">
+      <li>
+        <span class="step-num">1</span>
+        <div>
+          <h3>Drop a reference.</h3>
+          <p>A historical photo, a screenshot, concept art, an Instagram mini — anything. Pigsmith reads the colours.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div>
+          <h3>Pick your brand (or don't).</h3>
+          <p>Have a drawer full of Vallejo? Tell Pigsmith. Pigsmith leads with your brand and shows cross-refs to the other three.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div>
+          <h3>Get the recipe.</h3>
+          <p>3–5 zones. 3–5 layers per zone. Basecoat → wash → layer → highlight → edge. Plus the technique notes the videos skip.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div>
+          <h3>Paint the damn mini.</h3>
+          <p>And save the scheme to your Army for next time. Build a coherent force, not a museum of mismatched test models.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="how-cta"><a href="/tool.html" class="btn-primary">Try the free demo →</a></div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2>Pricing.</h2>
+    <p class="pricing-sub">Free to try. Pay if you actually use it.</p>
+    <div class="tiers">
+      <article class="tier">
+        <header><h3>Free</h3><span class="price">$0</span></header>
+        <ul>
+          <li>3 schemes per month</li>
+          <li>All 4 brand cross-references</li>
+          <li>Email-gated saves</li>
+          <li>Watermarked PDF</li>
+        </ul>
+        <a href="/tool.html" class="btn-secondary">Start free</a>
+      </article>
+      <article class="tier tier-featured">
+        <span class="tier-badge">Most painters pick this</span>
+        <header><h3>Pro</h3><span class="price">$9<small>/mo</small></span></header>
+        <ul>
+          <li>Unlimited schemes</li>
+          <li>Save to "My Army"</li>
+          <li>Paint inventory matching</li>
+          <li>Clean PDF export, no watermark</li>
+          <li>Or $79/year (save 28%)</li>
+        </ul>
+        <a href="/tool.html" class="btn-primary">Go Pro</a>
+      </article>
+      <article class="tier">
+        <header><h3>Studio</h3><span class="price">$19<small>/mo</small></span></header>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Commercial use license</li>
+          <li>Client-shareable schemes</li>
+          <li>White-label PDF</li>
+          <li>Bulk batch generation</li>
+        </ul>
+        <a href="/tool.html" class="btn-secondary">For commissions</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="proof">
+    <h2>The wedge.</h2>
+    <div class="proof-grid">
+      <div class="proof-stat">
+        <strong>4 brands</strong>
+        <p>Citadel, Vallejo, Army Painter, Scale75 — every layer cross-referenced. Use paints you already own.</p>
+      </div>
+      <div class="proof-stat">
+        <strong>8 seconds</strong>
+        <p>Recipes generate in under ten seconds. Beats six hours of Reddit replies that never include paint IDs.</p>
+      </div>
+      <div class="proof-stat">
+        <strong>3–5 zones</strong>
+        <p>Armour, cloth, skin, weapon, base. Each broken down to basecoat, wash, layer, highlight, edge.</p>
+      </div>
+      <div class="proof-stat">
+        <strong>0 dependencies</strong>
+        <p>No app to install. No account required for the demo. Open the page, drop a reference, get a recipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="capture">
+    <div class="capture-inner">
+      <h2>Weekly scheme drop.</h2>
+      <p>One curated scheme every Sunday. Pulled from real Pigsmith generations the community loved most.</p>
+      <form id="capture-form" class="capture-form">
+        <input type="email" id="capture-email" placeholder="painter@example.com" required>
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+      <p class="capture-note" id="capture-note"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-cols">
+    <div>
+      <span class="brand-mark">Pigsmith</span>
+      <p>AI paint scheme advisor for tabletop miniature painters.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <a href="/tool.html">Try the demo</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div>
+      <h4>Studio</h4>
+      <a href="https://majorsolutions.studio">Major Solutions Studio</a>
+      <a href="mailto:hello@majorsolutions.studio">Contact</a>
+    </div>
+  </div>
+  <div class="footer-base">© 2026 Pigsmith. A Major Solutions Studio joint.</div>
+</footer>
+
+<script src="/landing.js" defer></script>
+</body>
+</html>

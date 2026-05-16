@@ -1,0 +1,10 @@
+{
+  "name": "pigsmith",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pigsmith — AI paint scheme generator for tabletop miniature painters",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {}
+}
