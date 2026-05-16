@@ -28,11 +28,11 @@ exports.handler = async function (event) {
 
   try {
     const stmt = {
-      sql: 'INSERT INTO subscribers (email, source, idea, created_at) VALUES (?, ?, ?, datetime(\'now\')) ON CONFLICT(email, idea) DO NOTHING',
+      sql: 'INSERT INTO subscribers (email, idea_slug, source, created_at) VALUES (?, ?, ?, datetime(\'now\'))',
       args: [
         { type: 'text', value: email },
-        { type: 'text', value: source },
-        { type: 'text', value: idea }
+        { type: 'text', value: idea },
+        { type: 'text', value: source }
       ]
     };
     const res = await fetch(httpUrl, {
@@ -51,6 +51,16 @@ exports.handler = async function (event) {
     if (!res.ok) {
       const txt = await res.text();
       console.error('Turso insert failed:', res.status, txt);
+      return cors(503, JSON.stringify({ error: 'Could not save subscriber' }));
+    }
+    const data = await res.json();
+    const inner = (data.results || [])[0];
+    if (inner && inner.type === 'error') {
+      const msg = (inner.error && inner.error.message) || '';
+      if (msg.includes('UNIQUE')) {
+        return cors(200, JSON.stringify({ ok: true, duplicate: true }));
+      }
+      console.error('Turso SQL error:', msg);
       return cors(503, JSON.stringify({ error: 'Could not save subscriber' }));
     }
     return cors(200, JSON.stringify({ ok: true }));
